@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyAPITestSuite">
+    <test name="MyAPITests">
+        <classes>
+            <!-- Add your test classes here -->
+            <class name="org.example.classAPICall"/>
+            <!-- Add more classes as needed -->
+        </classes>
+    </test>
+</suite>
