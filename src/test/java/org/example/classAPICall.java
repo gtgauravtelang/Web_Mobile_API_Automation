@@ -1,11 +1,18 @@
 package org.example;
 
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
+import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.constants;
+import utilities.jsonReaderCode;
+
+import java.io.File;
+import java.io.IOException;
 
 import static io.restassured.RestAssured.given;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class classAPICall {
     @Test
@@ -88,5 +95,24 @@ public class classAPICall {
                 .when().get("https://reqres.in/api/users?delay=3");
         assertEquals(respa.statusCode(), 200);
         assertEquals(respa.path("data[1].last_name"), "Weaver", "Not Matched");
+    }
+
+    @Test(priority = -1)
+    public void jsonSchemaValidator()
+    {
+        File jsonschema = new File("resources/jsonExpectedSchema.json");
+        given()
+                .when().get("https://reqres.in/api/users")
+                .then().assertThat().statusCode(200)
+                .body(JsonSchemaValidator.matchesJsonSchema(jsonschema));
+    }
+
+    @Test(priority = -2)
+    public void keyPairTestData() throws IOException, ParseException {
+        for(int i=0;i<=5;i++)
+        {
+            given().when().get(jsonReaderCode.getTestData("url["+i+"]"))
+                    .then().statusCode(200);
+        }
     }
 }
