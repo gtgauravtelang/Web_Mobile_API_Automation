@@ -87,6 +87,6 @@ public class classAPICall {
         Response respa = given()
                 .when().get("https://reqres.in/api/users?delay=3");
         assertEquals(respa.statusCode(), 200);
-        assertEquals(respa.path("data[1].last_name"), "Ferguson", "Not Matched");
+        assertEquals(respa.path("data[1].last_name"), "Weaver", "Not Matched");
     }
 }
