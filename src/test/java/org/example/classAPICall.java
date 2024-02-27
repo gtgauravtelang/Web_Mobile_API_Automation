@@ -3,13 +3,13 @@ package org.example;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.json.simple.parser.ParseException;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.constants;
 import utilities.jsonReaderCode;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.*;
@@ -51,17 +51,6 @@ public class classAPICall {
         System.out.println("TC 2 Passed");
     }
 
-    @Test
-    public void wrapperClassTests() {
-        int i, j, k;
-        i = 10;
-        String str1 = "786";
-        j = Integer.parseInt(str1);
-        k = i + j;
-//        str1=String.valueOf(k);
-//        System.out.println(str1.charAt(1));
-        assertEquals(k, 796);
-    }
     @Test
     public void postBooksWithToken()
     {
@@ -109,10 +98,19 @@ public class classAPICall {
 
     @Test(priority = -2)
     public void keyPairTestData() throws IOException, ParseException {
-        for(int i=0;i<=5;i++)
+        int i=0;
+        ArrayList<String> strArr = new ArrayList<String>();
+        for(i=0; i<6; i++) {
+            strArr.add(jsonReaderCode.getTestData("url["+i+"]"));
+        }
+        i=0;
+        for (String x: strArr)
         {
-            given().when().get(jsonReaderCode.getTestData("url["+i+"]"))
-                    .then().statusCode(200);
+            Response resT = given().when().get(x);
+            //Intentionally failing 6th URL
+            assertEquals(resT.statusCode(), 200, "Not Matched");
+            System.out.println("Url."+(i+1)+" "+x);
+            i++;
         }
     }
 }
