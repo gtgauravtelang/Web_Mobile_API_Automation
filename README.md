@@ -1,3 +1,4 @@
-1. 8 Rest Assured Java Tests are written in classAPICall.java
-2. classAPICall.java can be found in the path: src/test/java/org/example
-3. 8th Test case i.e. keyPairTestData() is intentionally failed, expected: 200, actual: 404
+1. In-progress repository including automated tests created in JAVA using Rest Assured, Appium & Selenium
+2. 8 Automated scripts in Java-RestAssured
+3. 1 Automated script in Java-Selenium
+4. 1 Automated script in Java-Appium
