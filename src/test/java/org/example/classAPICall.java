@@ -25,7 +25,7 @@ public class classAPICall {
                 .post("https://bookstore.toolsqa.com/Account/v1/GenerateToken");
         assertEquals(responseT.statusCode(),200);
         String newtoken = responseT.path("token");
-        System.out.println("Token at fetchTokenBookStore: "+newtoken);
+        System.out.println("Token at fetchTokenBookStore is "+newtoken);
         return newtoken;
     }
 
