@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>APIautomationMvn</artifactId>
+  <artifactId>Web_Mobile_API_Automation</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>APIautomationMvn</name>
+  <name>Web_Mobile_API_Automation</name>
   <url>http://maven.apache.org</url>
 
   <properties>
