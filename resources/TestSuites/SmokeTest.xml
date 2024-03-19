@@ -3,7 +3,7 @@
     <test name="MyAPITests">
         <classes>
             <!-- Add your test classes here -->
-            <class name="org.example.classAPICall"/>
+            <class name="org.example.pagesAPI.APItests_page"/>
             <!-- Add more classes as needed -->
         </classes>
     </test>

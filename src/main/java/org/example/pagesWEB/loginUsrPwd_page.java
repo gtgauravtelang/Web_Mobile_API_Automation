@@ -18,7 +18,8 @@ public class loginUsrPwd_page {
     @FindBy(id="password") WebElement password;
     @FindBy(id="submit") WebElement submitButton;
     @FindBy(id="error") WebElement errorMessage;
-    By successLoginMessage = By.xpath("//*[@id=\"loop-container\"]/div/article/div/h1");
+    @FindBy(xpath="//*[@id='loop-container']/div/article/div/h1")
+    WebElement successLoginMessage;
 
     public String loginPage() throws InterruptedException {
         driver.get("https://practicetestautomation.com/practice-test-login/");
@@ -45,6 +46,6 @@ public class loginUsrPwd_page {
     }
     public String successLoginMessageMethod()
     {
-        return driver.findElement(successLoginMessage).getText();
+        return successLoginMessage.getText();
     }
 }

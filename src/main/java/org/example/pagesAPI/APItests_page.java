@@ -1,8 +1,10 @@
-package org.example;
+package org.example.pagesAPI;
 
+import io.restassured.RestAssured;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.constants;
 import utilities.jsonReaderCode;
@@ -12,9 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static io.restassured.RestAssured.given;
-import static org.testng.Assert.*;
 
-public class classAPICall {
+public class APItests_page {
     @Test
     public String fetchTokenBookStore() {
         Response responseT = given()
@@ -23,21 +24,18 @@ public class classAPICall {
                 .body("{\"userName\":\"gtadmin2\",\"password\":\"Emov@123\"}")
                 .when()
                 .post("https://bookstore.toolsqa.com/Account/v1/GenerateToken");
-        assertEquals(responseT.statusCode(),200);
+        Assert.assertEquals(responseT.statusCode(),200);
         String newtoken = responseT.path("token");
         System.out.println("Token at fetchTokenBookStore is "+newtoken);
         return newtoken;
     }
 
     @Test
-    public void getreqresdata1() {
-        given()
+    public int getreqresdata1() {
+        Response resp=given()
                 .when()
-                .get("https://reqres.in/api/users?page=2")
-                .then()
-                .assertThat()
-                .statusCode(200);
-        System.out.println("TC 1 Passed");
+                .get("https://reqres.in/api/users?page=2");
+        return resp.statusCode();
     }
 
     @Test
@@ -56,14 +54,14 @@ public class classAPICall {
     {
         String fetchedToken=fetchTokenBookStore();
         System.out.println("Token at postBooksWithToken : "+fetchedToken);
-        Response resp=given()
+        Response resp= given()
                 .header("Content-Type", constants.CONTENT_TYPE)
                 .header("Authorization","Bearer "+fetchedToken)
                 .body("{\"userId\":\"gtadmin2\",\"collectionOfIsbns\":[{\"isbn\":" +
                         "\"9781593277574\"}]}")
                 .when()
                 .post("https://bookstore.toolsqa.com/BookStore/v1/Books");
-        assertEquals(resp.statusCode(), 401);
+        Assert.assertEquals(resp.statusCode(), 401);
         System.out.println("Message is:"+resp.path("message"));
         System.out.println("Code is : "+resp.path("code"));
     }
@@ -71,7 +69,7 @@ public class classAPICall {
     @Test
     public void JsonpathResponseCheck()
     {
-        Response resp2=given()
+        Response resp2= given()
                 .when().get("https://reqres.in/api/users?page=2");
         String str1 = resp2.body().path("data[4].first_name");
         System.out.println(resp2.body().path("data[4]").toString());
@@ -82,8 +80,8 @@ public class classAPICall {
     public void checkAnotherJSON() {
         Response respa = given()
                 .when().get("https://reqres.in/api/users?delay=3");
-        assertEquals(respa.statusCode(), 200);
-        assertEquals(respa.path("data[1].last_name"), "Weaver", "Not Matched");
+        Assert.assertEquals(respa.statusCode(), 200);
+        Assert.assertEquals(respa.path("data[1].last_name"), "Weaver", "Not Matched");
     }
 
     @Test(priority = -1)
@@ -108,7 +106,7 @@ public class classAPICall {
         {
             Response resT = given().when().get(x);
             //Intentionally failing 6th URL
-            assertEquals(resT.statusCode(), 200, "Not Matched");
+            Assert.assertEquals(resT.statusCode(), 200, "Not Matched");
             System.out.println("Url."+(i+1)+" "+x);
             i++;
         }
