@@ -4,3 +4,5 @@ Includes below:
 1. Automated scripts in Java-RestAssured
 2. Automated script in Java-Selenium
 3. Automated script in Java-Appium
+
+Just now sync'ed in Cursor

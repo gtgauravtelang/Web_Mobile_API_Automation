@@ -10,14 +10,14 @@
 <!--            <class name="runnerCucumberPkg.testRunnerCucAPI"/>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="Regression Tests - Mobile">
+    <!-- <test name="Regression Tests - Mobile">
         <classes>
             <class name="runnerCucumberPkg.testRunnerCucMobile"/>
         </classes>
-    </test>
-<!--    <test name="Regression Tests - Website">-->
-<!--        <classes>-->
-<!--            <class name="runnerCucumberPkg.testRunnerCucWEB"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    </test> -->
+   <test name="Regression Tests - Website">
+       <classes>
+           <class name="runnerCucumberPkg.testRunnerCucWEB"/>
+       </classes>
+   </test>
 </suite>
