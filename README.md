@@ -5,4 +5,4 @@ Includes below:
 2. Automated script in Java-Selenium
 3. Automated script in Java-Appium
 
-Just now sync'ed in Cursor
+I am happy now.
