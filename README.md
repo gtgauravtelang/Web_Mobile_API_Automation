@@ -5,4 +5,4 @@ Includes below:
 2. Automated script in Java-Selenium
 3. Automated script in Java-Appium
 
-I am happy now.
+On chat with My Reliable group buddy.
