@@ -5,19 +5,19 @@
         <listener class-name="extentListener">
         </listener>
     </listeners>
-<!--    <test name="Regression Tests - API">-->
-<!--        <classes>-->
-<!--            <class name="runnerCucumberPkg.testRunnerCucAPI"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+   <test name="Regression Tests - API">
+        <classes>
+            <class name="runnerCucumberPkg.testRunnerCucAPI"/>
+        </classes>
+    </test>
     <!-- <test name="Regression Tests - Mobile">
         <classes>
             <class name="runnerCucumberPkg.testRunnerCucMobile"/>
         </classes>
     </test> -->
-   <test name="Regression Tests - Website">
+   <!-- <test name="Regression Tests - Website">
        <classes>
            <class name="runnerCucumberPkg.testRunnerCucWEB"/>
        </classes>
-   </test>
+   </test> -->
 </suite>
