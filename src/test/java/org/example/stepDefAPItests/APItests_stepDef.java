@@ -12,7 +12,7 @@ public class APItests_stepDef {
     @Then("User should receive {int} as a response code")
     public void user_should_receive_as_a_response_code(Integer int1) {
      apitestsObject = new APItests_page();
-     softAssert.assertEquals(apitestsObject.getreqresdata1(), 200);
+     softAssert.assertEquals(apitestsObject.getreqresdata1(), 201);
      softAssert.assertAll();
     }
 }

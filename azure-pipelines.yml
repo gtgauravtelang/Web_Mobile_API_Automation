@@ -5,7 +5,7 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: Maven@3
+- task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
@@ -16,3 +16,9 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean test'
     options: '-Dheadless=true'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'target/extent-report.html'
+    ArtifactName: 'ExtentReport'
+    publishLocation: 'Container'
